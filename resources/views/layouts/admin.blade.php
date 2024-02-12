@@ -7,16 +7,20 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title', 'Portfolio')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    {{-- Yield per eventuali cdn --}}
+    @yield('cdn')
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+    @yield('body')
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -73,8 +77,11 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            @yield('main-content')
         </main>
+
+        {{-- Script --}}
+        @yield('scripts')
     </div>
 </body>
 </html>
