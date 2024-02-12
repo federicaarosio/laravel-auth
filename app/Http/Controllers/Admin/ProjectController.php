@@ -30,7 +30,18 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'title' => ['required'],
+                'description' => ['required'],
+                'cover_image' => ['required', 'url:http,https'],
+                'author' => ['required'],
+            ]);
+            $data = $request->all();
+
+            $project = Project::create($data);
+
+            return redirect()->route('admin.projects.show', $project);
     }
 
     /**
@@ -72,8 +83,9 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index');
     }
 }
