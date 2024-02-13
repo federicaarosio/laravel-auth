@@ -33,6 +33,9 @@
                         <label for="cover_image" class="input-group-text">Project image url:</label>
                         <input class="form-control" type="text" name="cover_image" id="cover_image" value="{{ old('cover_image', $project->cover_image) }}">
                     </div>
+                    <div class="mb-2">
+                        <img src="" alt="Project cover preview" class="d-none" id="cover-image-preview">
+                    </div>
 
                     <div class="mb-3 input-group">
                         <label for="languages" class="input-group-text">Languages:</label>
@@ -56,4 +59,13 @@
             </div>
         </div>
     </div>
+
+    <script>
+        //quando il valore dell'input cambia, cambio l'attributo src dell'img con classe cover-image-preview inserendo il value dell'input. Poi tolgo la classe d-none per visualizzare l'img.
+        document.getElementById('cover_image').addEventListener('change', function(event){
+            const coverImagePreviewEl = document.getElementById('cover-image-preview')
+            coverImagePreviewEl.setAttribute('src', this.value)
+            coverImagePreviewEl.classList.remove('d-none')
+        });
+    </script>
 @endsection
