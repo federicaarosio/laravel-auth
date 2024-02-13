@@ -42,14 +42,43 @@
                                     Edit
                                 </button>
                             </a>
-                            <form class="d-inline-block" action="{{ route('admin.projects.destroy', $project) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
 
-                                <button class="btn btn-sm btn-warning" type="submit">
+
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $project->id }}">
                                     Delete
                                 </button>
-                            </form>
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal-{{ $project->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5 text-danger" id="exampleModalLabel">Delete project</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you really sure you want to delete "<strong>{{ $project->title }}</strong>" project?<br>
+                                            After deleting, you'll find it in the bin.
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <form class="d-inline-block" action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+            
+                                            <button class="btn btn-danger" type="submit">
+                                                Delete
+                                            </button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+
+
+
                         </td>
                     </tr>
                     @endforeach
