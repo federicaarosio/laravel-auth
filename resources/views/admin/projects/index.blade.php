@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="modal-body">
                                             Are you really sure you want to delete "<strong>{{ $project->title }}</strong>" project?<br>
-                                            After deleting, you'll find it in the bin.
+                                            After deleting, you'll find it in the "Deleted Projects" menu where you can restore it.
                                         </div>
                                         <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

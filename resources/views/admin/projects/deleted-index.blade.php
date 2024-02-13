@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12">
             <h1>
-                all {{ Auth::user()->name }}'s projects
+                all {{ Auth::user()->name }}'s projects that have been deleted
             </h1>
 
             <table class="table table-hover">
